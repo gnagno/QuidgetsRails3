@@ -26,7 +26,7 @@ It's extremely simple to use.
   + role.rb
       has_many :users
   
-## Supported widgets ## 
+## Supported widgets 
 
 * CHECKBOX: checkbox(object,method,html_options = {})   
     Ex: <%= raw checkbox( @user,"active",{:id => "active_check_#{@user.id}"}) %>
