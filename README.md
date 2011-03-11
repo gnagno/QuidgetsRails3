@@ -29,7 +29,7 @@ It's extremely simple to use.
 ## Supported widgets 
 
 * CHECKBOX: checkbox(object,method,html_options = {})   
-    Ex: <%= raw checkbox( @user,"active",{:id => "active_check_#{@user.id}"}) %>
+    Ex: <%= raw checkbox( @user,"active",{:id => "active_check_#{@user.id}", :name => 'test', :class=>'hello'}) %>
 
           
 * RADIO BUTTON: radio(object,choice,html_options = {})
