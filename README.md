@@ -1,11 +1,11 @@
 Quidgets
-========
+==============
 
 A collection of helper widgets that directly bind to your database structure.
 It's extremely simple to use.
 
 HOW TO INSTALL
-==============
+=======
 
 * Install plugin from git:
     rails plugin install git://github.com/phtphan/Quidgets.git
