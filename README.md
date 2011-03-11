@@ -20,6 +20,7 @@ Example
   rails g model role name:string
 
   Example DB structure:
+
   + user.rb
       belongs_to :role
     
