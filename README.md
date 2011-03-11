@@ -1,17 +1,16 @@
-Quidgets
-==============
+# Quidgets #
+
 
 A collection of helper widgets that directly bind to your database structure.
 It's extremely simple to use.
 
-HOW TO INSTALL
-=======
+## HOW TO INSTALL ##
+
 
 * Install plugin from git:
     rails plugin install git://github.com/phtphan/Quidgets.git
 
-Example
-=======
+## Example ##
 
   Generate two example models:
   
@@ -27,7 +26,7 @@ Example
   + role.rb
       has_many :users
   
-
+## Supported widgets ## 
 
 * CHECKBOX: checkbox(object,method,html_options = {})   
     Ex: <%= raw checkbox( @user,"active",{:id => "active_check_#{@user.id}"}) %>
