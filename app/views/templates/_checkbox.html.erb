@@ -1,16 +1,11 @@
-<input 
-  type="checkbox" 
-  id="<%= @html_options[:id] %>"
-  name="<%= @html_options[:name] %>"   
-  class="ph-checkbox <%= @html_options[:class] %>"
-  <%= " checked " if @is_checked %>
-/>
+<input type="checkbox" id="<%= @html_options[:id] %>" name="<%= @html_options[:name] %>" class="ph-checkbox <%= @html_options[:class] %>" data-model-name="<%= @object_model_name %>" data-object-id="<%= @object_id %>" data-object-method="<%= @method %>" <%= " checked " if @is_checked %> />
 
 <script type="text/javascript">
 $(function(){
   $('.ph-checkbox').change(function(){
     $.ajax({
       url: "<%= ph_quidgets_checkbox_update_path %>",
+      data: {id: $(this).attr('data-object-id'), object_model_name: $(this).attr('data-model-name'), method: $(this).attr('data-object-method') , svalue: $(this).is(':checked') },
       success: function(){
         $(this).addClass("done");
       }

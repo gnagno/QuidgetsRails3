@@ -3,14 +3,17 @@ module QuidgetsHelper
 # checkbox(record,"active",{:id => "active_check_#{record.id}"})     
   def checkbox(object,method,html_options = {}) 
     #Fine model name for data instance
-    object_model_name=find_model_name(object)
     
-    @html_options = html_options
+    @html_options       = html_options
+    @is_checked         = object.send(method.to_sym)==true
+    @object_model_name  = object.class.to_s 
+    @object_id          = object.id
+    @method             = method
+
 #    @object = object
 #    @method = method
     
-    @is_checked = object.send(method.to_sym)==true
-    
+    object_model_name=find_model_name(object)
     html="<input 
       type=\"checkbox\" 
       id=\"#{html_options[:id]}\" 
