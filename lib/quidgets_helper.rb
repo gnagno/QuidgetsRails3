@@ -2,31 +2,12 @@ module QuidgetsHelper
 ###################################################################################### checkbox  
 # checkbox(record,"active",{:id => "active_check_#{record.id}"})     
   def checkbox(object,method,html_options = {}) 
-    #Fine model name for data instance
     
     @html_options       = html_options
     @is_checked         = object.send(method.to_sym)==true
     @object_model_name  = object.class.to_s 
     @object_id          = object.id
     @method             = method
-
-#    @object = object
-#    @method = method
-    
-    object_model_name=find_model_name(object)
-    html="<input 
-      type=\"checkbox\" 
-      id=\"#{html_options[:id]}\" 
-      name=\"#{html_options[:name]}\" 
-      class=\"#{html_options[:class]}\" "
-        
-    html << "onclick=\"#{remote_function(:url => "/application/quidgets_checkbox_update?" <<
-      "id=#{object.id}&" <<
-      "object_model_name=#{object_model_name}&" <<
-      "method=#{method}", :with => "'svalue='+ this.checked")}\""
-    
-    html << " checked " if object.send(method.to_sym)==true
-    html << "/>"
     
     render :partial => 'templates/checkbox'
   end
