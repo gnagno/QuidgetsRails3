@@ -28,14 +28,22 @@ module QuidgetsHelper
     render :partial => 'templates/radio'
   end
 ###################################################################################### textbox
-  def textbox(object,method,html_options = {})
-    object_model=find_model_name(object)
-    html="<input 
-      type=\"text\" 
-      id=\"#{html_options[:id]}\" 
-      name=\"#{html_options[:name]}\" 
-      class=\"#{html_options[:class]}\" 
-      value=\"#{object.send(method.to_sym)}\"/>"        
+  def text_box(object,method,html_options = {})
+    
+#    @html_options = html_options
+#    @value        = object.send(method.to_sym)
+#    @object_model = object.class.to_s
+#    @object_id    = object.id
+#    @method       = method
+      
+    render  :partial => 'templates/textbox', 
+            :locals => { 
+              :html_options => html_options,
+              :value        => object.send(method.to_sym),
+              :object_model => object.class.to_s,
+              :object_id    => object.id,
+              :method       => method
+            }
   end
 ###################################################################################### listbox
 #* LISTBOX: listbox(object,choices,html_options = {})
