@@ -8,7 +8,7 @@ It's extremely simple to use.
 
 
 * Install plugin from git:
-
+  
     rails plugin install git://github.com/gnagno/quidgets2.git
     
 * modify your application.html.erb, replace in the <head> tag the include javascript directive with:
