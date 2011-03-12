@@ -71,6 +71,8 @@ Finally let's add some widgets to our test view:
 
     <%= raw text_box(@user, "name", {:id => "user_textbox_#{@user.id}"})%>
 
+Launch the server, visit http://localhost:3000/test/index and have fun :)
+
 ## Supported widgets 
 
 * CHECKBOX: checkbox(object,method,html_options = {})   
