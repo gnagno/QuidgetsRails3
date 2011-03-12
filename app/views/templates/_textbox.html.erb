@@ -21,6 +21,15 @@ $(function(){
       );
    }
   });
+  
+  $(".ph-textbox").live('blur',function(event){
+    save_textbox(
+      $(this).attr('data-object-id'), 
+      $(this).attr('data-model-name'), 
+      $(this).attr('data-method'),
+      $(this).attr('value') 
+    );
+  });
 });
 
 // I created a separate function for saving so we can use this both when the 
