@@ -17,27 +17,15 @@ module QuidgetsHelper
 # end
 
   def radio(object,choice,html_options = {})
-    #Find parent model name
-    object_model=find_model_name(object)
     
-    #Find option model name
-    choice_model=find_model_name(choice)
+    @html_options = html_options
+    @object_model = object.class.to_s
+    @object_id    = object.id
+    @choice_model = choice.class.to_s
+    @choice_id    = choice.id
+    @is_checked   = object.send(@choice_model.underscore.to_sym)==choice
     
-    #Construct HTML element
-    html="<input 
-    type=\"radio\" 
-    name=\"#{html_options[:name]}\" 
-    id=\"#{html_options[:id]}\" 
-    class=\"#{html_options[:class]}\" "
-      
-    html << "checked " if object.send(choice_model.underscore.to_sym)==choice
-    html << "onclick=\"
-    #{remote_function(:url => "/application/quidgets_radio_update?" <<
-      "object_id=#{object.id}&" <<
-      "choice_id=#{choice.id}&" <<
-      "object_model=#{object_model}&" <<
-      "choice_model=#{choice_model}")}\""
-    html << "/>"
+    render :partial => 'templates/radio'
   end
 ###################################################################################### textbox
   def textbox(object,method,html_options = {})
