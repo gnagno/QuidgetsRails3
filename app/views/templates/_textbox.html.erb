@@ -2,9 +2,19 @@
   type="text" 
   id="<%= html_options[:id] %>" 
   name="<%= html_options[:name] %>" 
-  class="<%= html_options[:class] %>" 
+  class="ph-textbox <%= html_options[:class] %>" 
   value="<%= value %>"
   data-model-name="<%= object_model %>"
   data-object-id="<%= object_id %>"
   data-method="<%= method %>"
 />
+
+<script type="text/javascript">
+$(function(){
+  $(".ph-textbox").live('keypress', function(event){
+    if (event.which == '13') {
+     alert('you pressed enter, now we are going to save it...');
+   }
+  });
+});
+</script>

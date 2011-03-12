@@ -12,19 +12,24 @@ It's extremely simple to use.
 
 ## Example ##
 
-  Generate two example models:
+### Generate two example models: ###
   
     rails g model user name:string description:text active:boolean role_id:integer
   
+  
     rails g model role name:string
 
-  Example DB structure:
+### Models associations: ###
 
   + user.rb
       belongs_to :role
     
   + role.rb
       has_many :users
+      
+### Generate a test controller and view ###
+
+    rails g controller test index
   
 ## Supported widgets 
 
