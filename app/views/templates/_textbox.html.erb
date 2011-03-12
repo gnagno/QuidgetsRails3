@@ -13,8 +13,15 @@
 $(function(){
   $(".ph-textbox").live('keypress', function(event){
     if (event.which == '13') {
-     alert('you pressed enter, now we are going to save it...');
+     // alert('you pressed enter, now we are going to save it...');
+     save_textbox( $(this).attr('value') );
    }
   });
 });
+
+// I created a separate function for saving so we can use this both when the 
+// user press enter key and when the user leaves the widget
+function save_textbox(value){
+  alert(value);
+};
 </script>
