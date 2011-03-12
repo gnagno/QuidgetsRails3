@@ -3,12 +3,6 @@ module QuidgetsHelper
 # checkbox(record,"active",{:id => "active_check_#{record.id}"})     
   def checkbox(object,method,html_options = {}) 
     
-#    @html_options       = html_options
-#    @is_checked         = object.send(method.to_sym)==true
-#    @object_model_name  = object.class.to_s 
-#    @object_id          = object.id
-#    @method             = method
-    
     render :partial => 'templates/checkbox',
             :locals => {
               :html_options       => html_options,
@@ -25,14 +19,15 @@ module QuidgetsHelper
 
   def radio(object,choice,html_options = {})
     
-    @html_options = html_options
-    @object_model = object.class.to_s
-    @object_id    = object.id
-    @choice_model = choice.class.to_s
-    @choice_id    = choice.id
-    @is_checked   = object.send(@choice_model.underscore.to_sym)==choice
-    
-    render :partial => 'templates/radio'
+    render :partial => 'templates/radio',
+            :locals => {
+              :html_options => html_options,
+              :object_model => object.class.to_s,
+              :object_id    => object.id,
+              :choice_model => choice.class.to_s,
+              :choice_id    => choice.id,
+              :is_checked   => object.send(choice.class.to_s.underscore.to_sym)==choice
+            }
   end
 ###################################################################################### textbox
   def text_box(object,method,html_options = {})
