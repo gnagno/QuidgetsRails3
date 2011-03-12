@@ -1,0 +1,19 @@
+<% choices.each do |choice| -%>
+  <%= raw radio(object, choice, {:name => "#{html_options[:name]}", :id => "role_option_#{choice.id}"}) %>
+  <%= label_tag("role_option_#{choice.id}", choice.name) %><br />
+<% end -%>
+
+<script type="text/javascript">
+$(function(){
+  $('.ph-radio').change( function() {
+    $.ajax({
+      url: "<%= ph_quidgets_radio_group_update_path %>",
+      data: { object_model: $(this).attr('data-model-name'), id: $(this).attr('data-model-id'), choice_model: $(this).attr('data-choice-model'), svalue: $(this).attr('value') },
+      dataType: "json",
+      success: function(result){
+        alert(result.msg); //TODO: We have to decide what to do with the result...
+      }
+    }); 
+  });
+});
+</script>

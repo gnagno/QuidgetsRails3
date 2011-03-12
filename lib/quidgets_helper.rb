@@ -14,7 +14,7 @@ module QuidgetsHelper
   end
 ###################################################################################### radio
 # Role.all.each do |role|
-#  html << radio(record,role,{:name => "role_option_#{record.id}"}) << "#{role.name}" 
+#  html << radio(record,role,{:name => "role_option_#{record.id}"})  
 # end
 
   def radio(object,choice,html_options = {})
@@ -27,6 +27,17 @@ module QuidgetsHelper
               :choice_model => choice.class.to_s,
               :choice_id    => choice.id,
               :is_checked   => object.send(choice.class.to_s.underscore.to_sym)==choice
+            }
+  end
+###################################################################################### radio
+#  html << radio_group(record,roles,{:name => "role_option_#{record.id}"}) 
+  def radio_group(object,choices,html_options = {})
+  
+    render :partial => 'templates/radio_group',
+            :locals =>  {
+              :object       =>  object,
+              :choices      =>  choices,
+              :html_options =>  html_options
             }
   end
 ###################################################################################### textbox

@@ -3,13 +3,8 @@
   id="<%= html_options[:id] %>" 
   class="ph-radio <%= html_options[:class] %>"
   value="<%= choice_id %>"
+  data-model-name="<%= object_model %>"
+  data-model-id="<%= object_id %>"  
+  data-choice-model="<%= choice_model %>"
    <%= " checked " if is_checked %>
 />
-
-<script type="text/javascript">
-$(function(){
-  $('.ph-radio').click( function() {
-    alert('something changed...');
-  });
-});
-</script>
