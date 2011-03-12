@@ -48,6 +48,29 @@ In your index action create some test objects and pass them to the view:
     @user   = User.first
     @roles  = Role.all
   
+  
+Finally let's add some widgets to our test view:
+
+    <h2>Testing checkbox</h2>
+
+    <%= label_tag( "active_check_#{@user.id}", "User active") %>
+    <%= raw checkbox( @user,"active",{:id => "active_check_#{@user.id}", :name => 'test', :class=>'hello'}) %>
+
+    <hr />
+
+    <h2>Testing radio</h2>
+
+    <% Role.all.each do |role| -%>
+      <%= raw radio(@user,role,{:name => "role_group_#{@user.id}", :id => "role_option_#{role.id}"}) %>
+      <%= label_tag("role_option_#{role.id}", role.name) %><br />
+    <% end -%>
+
+    <hr />
+
+    <h2>Testing textbox</h2>
+
+    <%= raw text_box(@user, "name", {:id => "user_textbox_#{@user.id}"})%>
+
 ## Supported widgets 
 
 * CHECKBOX: checkbox(object,method,html_options = {})   
