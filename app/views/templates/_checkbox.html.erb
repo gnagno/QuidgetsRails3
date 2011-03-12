@@ -1,4 +1,4 @@
-<input type="checkbox" id="<%= @html_options[:id] %>" name="<%= @html_options[:name] %>" class="ph-checkbox <%= @html_options[:class] %>" data-model-name="<%= @object_model_name %>" data-object-id="<%= @object_id %>" data-object-method="<%= @method %>" <%= " checked " if @is_checked %> />
+<input type="checkbox" id="<%= html_options[:id] %>" name="<%= html_options[:name] %>" class="ph-checkbox <%= html_options[:class] %>" data-model-name="<%= object_model_name %>" data-object-id="<%= object_id %>" data-object-method="<%= method %>" <%= " checked " if is_checked %> />
 
 <script type="text/javascript">
 $(function(){

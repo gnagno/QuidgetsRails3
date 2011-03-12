@@ -3,13 +3,20 @@ module QuidgetsHelper
 # checkbox(record,"active",{:id => "active_check_#{record.id}"})     
   def checkbox(object,method,html_options = {}) 
     
-    @html_options       = html_options
-    @is_checked         = object.send(method.to_sym)==true
-    @object_model_name  = object.class.to_s 
-    @object_id          = object.id
-    @method             = method
+#    @html_options       = html_options
+#    @is_checked         = object.send(method.to_sym)==true
+#    @object_model_name  = object.class.to_s 
+#    @object_id          = object.id
+#    @method             = method
     
-    render :partial => 'templates/checkbox'
+    render :partial => 'templates/checkbox',
+            :locals => {
+              :html_options       => html_options,
+              :is_checked         => object.send(method.to_sym)==true ,
+              :object_model_name  => object.class.to_s, 
+              :object_id          => object.id,
+              :method             => method
+            }
   end
 ###################################################################################### radio
 # Role.all.each do |role|
@@ -29,12 +36,6 @@ module QuidgetsHelper
   end
 ###################################################################################### textbox
   def text_box(object,method,html_options = {})
-    
-#    @html_options = html_options
-#    @value        = object.send(method.to_sym)
-#    @object_model = object.class.to_s
-#    @object_id    = object.id
-#    @method       = method
       
     render  :partial => 'templates/textbox', 
             :locals => { 
