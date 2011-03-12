@@ -22,14 +22,31 @@ It's extremely simple to use.
 ### Models associations: ###
 
   + user.rb
+  
       belongs_to :role
     
   + role.rb
+  
       has_many :users
       
-### Generate a test controller and view ###
+### Generate a test controller and action ###
 
     rails g controller test index
+    
+In your index action create some test objects and pass them to the view:
+
+    if( User.count == 0 )
+      User.create!(:name => "Ignazio", :active => true, :description => "my test user") 
+    end
+    
+    if(Role.count == 0)
+      Role.create!(:name => "Manager")
+      Role.create!(:name => "Administrator")
+      Role.create!(:name => "Programmer")
+    end
+      
+    @user   = User.first
+    @roles  = Role.all
   
 ## Supported widgets 
 
