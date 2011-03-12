@@ -12,7 +12,7 @@ It's extremely simple to use.
     rails plugin install git://github.com/gnagno/quidgets2.git
     
 * modify your application.html.erb, replace in the <head> tag the include javascript directive with:
-
+  
     <%= javascript_include_tag 'jquery-1.5.1.min.js' %>
     <%= javascript_include_tag ph_quidgets_jquery_path %>
 
