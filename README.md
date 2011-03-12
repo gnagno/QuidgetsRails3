@@ -8,7 +8,7 @@ It's extremely simple to use.
 
 
 * Install plugin from git:
-    rails plugin install git://github.com/phtphan/Quidgets.git
+    rails plugin install git://github.com/gnagno/quidgets2.git
 
 ## Example ##
 
