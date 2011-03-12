@@ -10,7 +10,7 @@ class QuidgetsController < ActionController::Base
     end
     
     object.save!
-    render :text => ""
+    render :json => {:msg => "The #{params[:object_model_name]} was updated"}, :layout => false
   end
  
 end

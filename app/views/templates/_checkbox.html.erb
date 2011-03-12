@@ -6,8 +6,9 @@ $(function(){
     $.ajax({
       url: "<%= ph_quidgets_checkbox_update_path %>",
       data: {id: $(this).attr('data-object-id'), object_model_name: $(this).attr('data-model-name'), method: $(this).attr('data-object-method') , svalue: $(this).is(':checked') },
-      success: function(){
-        $(this).addClass("done");
+      dataType: "json",
+      success: function(result){
+        alert(result.msg); //TODO: We have to decide what to do with the result...
       }
     });
   });
