@@ -61,10 +61,7 @@ Finally let's add some widgets to our test view:
 
     <h2>Testing radio</h2>
 
-    <% Role.all.each do |role| -%>
-      <%= raw radio(@user,role,{:name => "role_group_#{@user.id}", :id => "role_option_#{role.id}"}) %>
-      <%= label_tag("role_option_#{role.id}", role.name) %><br />
-    <% end -%>
+    <%= raw radio_group(@user,Role.all,{:name => "role_group_#{@user.id}"}) %>
 
     <hr />
 
