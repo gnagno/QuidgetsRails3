@@ -57,6 +57,8 @@ In your index action create some test objects and pass them to the view:
   
 Finally let's add some widgets to our test view:
 
+    <h1>Index#index</h1>
+
     <h2>Testing checkbox</h2>
 
     <%= label_tag( "active_check_#{@user.id}", "User active") %>
@@ -66,13 +68,23 @@ Finally let's add some widgets to our test view:
 
     <h2>Testing radio</h2>
 
-    <%= raw radio_group(@user,Role.all,{:name => "role_group_#{@user.id}"}) %>
+    <%= raw radio_group(@user,Role.all, :id, :name, {:name => "role_group_#{@user.id}"}) %>
 
     <hr />
 
     <h2>Testing textbox</h2>
 
     <%= raw text_box(@user, "name", {:id => "user_textbox_#{@user.id}"})%>
+
+    <hr />
+
+    <h2>Testing listbox</h2>
+
+    <hr />
+
+    <h2>Testing dropbox</h2>
+
+    <%= raw dropbox(@user, :role_id, Role.all, :id, :name, {:id => "role_#{@user.id}"}) %>
 
 Launch the server, visit http://localhost:3000/test/index and have fun :)
 
