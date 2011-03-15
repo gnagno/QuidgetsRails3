@@ -31,13 +31,15 @@ module QuidgetsHelper
   end
 ###################################################################################### radio
 #  html << radio_group(record,roles,{:name => "role_option_#{record.id}"}) 
-  def radio_group(object,choices,html_options = {})
+  def radio_group(object,choices, choices_id, choices_label, html_options = {})
   
     render :partial => 'templates/radio_group',
             :locals =>  {
-              :object       =>  object,
-              :choices      =>  choices,
-              :html_options =>  html_options
+              :object         =>  object,
+              :choices        =>  choices,
+              :choices_id     =>  choices_id,
+              :choices_label  =>  choices_label,
+              :html_options   =>  html_options
             }
   end
 ###################################################################################### textbox
@@ -63,23 +65,23 @@ module QuidgetsHelper
 #* DROPBOX: dropbox(object,choices,html_options = {})
 # dropbox(user,Role.all,{:id => "role_#{user.id}"})
 
-  def dropbox(object,choices,html_options = {})
+  def dropbox(object, method, choices, choices_id, choices_label, html_options = {})
     model_name=find_model_name(object)
-    html="<select 
-      id=\"#{html_options[:id]}\" 
-      name=\"#{html_options[:name]}\" 
-      class=\"#{html_options[:class]}\" 
-      />"
     
-    html << "<option onclick=\"#{remote_function(:url => "/application/quidgets_dropbox_update/#{object.id}?model_name=#{model_name}&option_model_name=#{find_model_name(choices.first).underscore}")}\">(Please select)</option>"
-      
-    choices.each do |choice|
-      html << "<option onclick=\"#{remote_function(:url => "/application/quidgets_dropbox_update/#{object.id}?model_name=#{model_name}&option_model_name=#{find_model_name(choice).underscore}&option_id=#{choice.id}")}\"" <<
-      "#{"selected" if !object.send(find_model_name(choice).underscore.to_sym).nil? and object.send(find_model_name(choice).downcase.to_sym).id==choice.id} >" << 
-      "#{choice.name}</option>"
-    end
-    html <<"</select>"
-    return html
+    html_options['class']             = "ph-dropbox #{html_options['class']}".strip
+    html_options['data-model-name']   = object.class.to_s
+    html_options['data-model-id']     = object.id
+    html_options['data-choice-model'] = choices[0].class.to_s
+    
+    render :partial => 'templates/dropbox',
+           :locals  => {
+             :html_options  => html_options,
+             :object        => object,
+             :method        => method,
+             :choices       => choices,
+             :choices_id    => choices_id,
+             :choices_label => choices_label
+           }
   end
 ###################################################################################### textbox
   def textbox(object,field,html_options = {})

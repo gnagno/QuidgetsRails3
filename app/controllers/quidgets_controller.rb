@@ -37,4 +37,17 @@ class QuidgetsController < ActionController::Base
       render :json => {:msg => "Impossible to update #{params[:object_model]}"}, :layout => false
     end
   end
+  
+  def quidgets_dropbox_update
+    object  = params[:object_model].camelize.constantize.find(params[:id])
+    choice  = params[:choice_model].camelize.constantize.find(params[:svalue])
+    
+    object.update_attribute(params[:choice_model].underscore + '_id', params[:svalue])
+    
+    if object.save
+      render :json => {:msg => "The #{params[:object_model]} was updated"}, :layout => false
+    else
+      render :json => {:msg => "Impossible to update #{params[:object_model]}"}, :layout => false
+    end
+  end
 end

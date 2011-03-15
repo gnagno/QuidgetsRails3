@@ -1,4 +1,4 @@
 <% choices.each do |choice| -%>
   <%= raw radio(object, choice, {:name => "#{html_options[:name]}", :id => "role_option_#{choice.id}"}) %>
-  <%= label_tag("role_option_#{choice.id}", choice.name) %><br />
+  <%= label_tag("role_option_#{choice[choices_id]}", choice[choices_label]) %><br />
 <% end -%>

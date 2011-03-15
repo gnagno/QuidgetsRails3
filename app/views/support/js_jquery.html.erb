@@ -20,6 +20,20 @@ $(function(){
       }
     }); 
   });
+  
+$(document).ready(function(){
+  $(".ph-dropbox").live('change', function(){
+    var id = $(this).attr('id');
+    $.ajax({
+      url: "<%= ph_quidgets_dropbox_update_path %>",
+      data: { object_model: $(this).attr('data-model-name'), id: $(this).attr('data-model-id'), choice_model: $(this).attr('data-choice-model'), svalue: $("#"+id).val() },
+      dataType: "json",
+      success: function(result){
+        alert(result.msg);
+      }
+    });
+  });
+});
 
 
 $(".ph-textbox").live('keypress', function(event){
