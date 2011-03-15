@@ -10,7 +10,7 @@ class QuidgetsController < ActionController::Base
     end
     
     object.save!
-    render :json => {:msg => "The #{params[:object_model_name]} was updated"}, :layout => false
+    render :json => {:msg => "The #{params[:object_model_name]} was updated", :callback => params[:callback]}, :layout => false
   end
  
   def quidgets_textbox_update
@@ -32,9 +32,9 @@ class QuidgetsController < ActionController::Base
     object.update_attribute(params[:choice_model].underscore + '_id', params[:svalue])
     
     if object.save
-      render :json => {:msg => "The #{params[:object_model]} was updated"}, :layout => false
+      render :json => {:msg => "The #{params[:object_model]} was updated", :callback => params[:callback]}, :layout => false
     else
-      render :json => {:msg => "Impossible to update #{params[:object_model]}"}, :layout => false
+      render :json => {:msg => "Impossible to update #{params[:object_model]}", :callback => params[:callback]}, :layout => false
     end
   end
   

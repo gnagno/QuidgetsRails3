@@ -17,7 +17,7 @@ module QuidgetsHelper
 #  html << radio(record,role,{:name => "role_option_#{record.id}"})  
 # end
 
-  def radio(object,choice,html_options = {})
+  def radio(object,choice,html_options = {}, javascript_options = {})
     
     render :partial => 'templates/radio',
             :locals => {
@@ -26,12 +26,16 @@ module QuidgetsHelper
               :object_id    => object.id,
               :choice_model => choice.class.to_s,
               :choice_id    => choice.id,
-              :is_checked   => object.send(choice.class.to_s.underscore.to_sym)==choice
+              :is_checked   => object.send(choice.class.to_s.underscore.to_sym)==choice,
+              :callback     => javascript_options[:callback]
             }
   end
 ###################################################################################### radio
 #  html << radio_group(record,roles,{:name => "role_option_#{record.id}"}) 
-  def radio_group(object,choices, choices_id, choices_label, html_options = {})
+  def radio_group(object,choices, choices_id, choices_label, html_options = {}, javascript_options = {})
+  puts "--------------------------------------"
+  puts javascript_options[:callback]
+  puts "--------------------------------------"
   
     render :partial => 'templates/radio_group',
             :locals =>  {
@@ -39,7 +43,8 @@ module QuidgetsHelper
               :choices        =>  choices,
               :choices_id     =>  choices_id,
               :choices_label  =>  choices_label,
-              :html_options   =>  html_options
+              :html_options   =>  html_options,
+              :callback       =>  javascript_options[:callback]
             }
   end
 ###################################################################################### textbox

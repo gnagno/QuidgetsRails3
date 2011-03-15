@@ -6,6 +6,9 @@ $(function(){
       dataType: "json",
       success: function(result){
         alert(result.msg); 
+        if( $(this).attr('data-callback') ){
+          $(this).attr('data-callback').call( );
+        }
       }
     });
   });
@@ -13,10 +16,10 @@ $(function(){
   $('.ph-radio').change( function() {
     $.ajax({
       url: "<%= ph_quidgets_radio_group_update_path %>",
-      data: { object_model: $(this).attr('data-model-name'), id: $(this).attr('data-model-id'), choice_model: $(this).attr('data-choice-model'), svalue: $(this).attr('value') },
+      data: { object_model: $(this).attr('data-model-name'), id: $(this).attr('data-model-id'), choice_model: $(this).attr('data-choice-model'), svalue: $(this).attr('value'), callback: $(this).attr('data-callback') },
       dataType: "json",
       success: function(result){
-        alert(result.msg);
+          window[ result.callback ](result.msg);
       }
     }); 
   });
