@@ -95,12 +95,14 @@ Launch the server, visit http://localhost:3000/test/index and have fun :)
 
           
 * RADIO BUTTON: radio(object,choice,html_options = {})
-    Ex:    
-     Role.all.each do |role|
-      html << radio(user,role,{:name => "role_option_#{record.id}"}) << "#{role.name}" 
-     end
+    Ex: 
+       
+     <%= raw radio_group(@user,Role.all, :id, :name, {:name => "role_group_#{@user.id}"}) %>
+     
       
-* TEXTBOX: (in progress)
+* TEXTBOX:
+    
+    <%= raw text_box(@user, "name", {:id => "user_textbox_#{@user.id}"})%>
 
 
     
