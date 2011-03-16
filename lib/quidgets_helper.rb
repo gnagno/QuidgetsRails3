@@ -61,6 +61,17 @@ module QuidgetsHelper
             }
   end
 ###################################################################################### listbox
+#* LISTBOX DRAG & DROP: listbox_dragdrop(objects, label, sort_key, html_options = {})
+#    <%= listbox(@user,PaymentMethod.all,{:id => "dropbox_#{@user.id}"}) %>   
+  def listbox_dragdrop(objects, label, sort_key, html_options = {})
+    render  :partial  => 'templates/listbox_dragdrop',
+            :locals   => {
+              :objects  =>  objects,
+              :label    =>  label,
+              :sort_key =>  sort_key
+            }
+  end
+###################################################################################### listbox
 #* LISTBOX: listbox(object,choices,html_options = {})
 #    <%= listbox(@user,PaymentMethod.all,{:id => "dropbox_#{@user.id}"}) %>        
 

@@ -55,6 +55,9 @@ $(".ph-textbox").live('keypress', function(event){
       $(this).attr('value') 
     );
   });
+  
+  $( ".ph-listbox-dragdrop" ).sortable();
+	$( ".ph-listbox-dragdrop" ).disableSelection();
 }); 
 
 function save_textbox(object_id, model_name, method_name, value){
