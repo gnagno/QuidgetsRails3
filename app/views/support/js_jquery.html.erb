@@ -2,13 +2,10 @@ $(function(){
   $('.ph-checkbox').change(function(){
     $.ajax({
       url: "<%= ph_quidgets_checkbox_update_path %>",
-      data: {id: $(this).attr('data-object-id'), object_model_name: $(this).attr('data-model-name'), method: $(this).attr('data-object-method') , svalue: $(this).is(':checked') },
+      data: {id: $(this).attr('data-object-id'), object_model_name: $(this).attr('data-model-name'), method: $(this).attr('data-object-method') , svalue: $(this).is(':checked'), callback: $(this).attr('data-callback') },
       dataType: "json",
       success: function(result){
-        alert(result.msg); 
-        if( $(this).attr('data-callback') ){
-          $(this).attr('data-callback').call( );
-        }
+        window[ result.callback ](result.msg);
       }
     });
   });
@@ -19,7 +16,7 @@ $(function(){
       data: { object_model: $(this).attr('data-model-name'), id: $(this).attr('data-model-id'), choice_model: $(this).attr('data-choice-model'), svalue: $(this).attr('value'), callback: $(this).attr('data-callback') },
       dataType: "json",
       success: function(result){
-          window[ result.callback ](result.msg);
+        window[ result.callback ](result.msg);
       }
     }); 
   });
