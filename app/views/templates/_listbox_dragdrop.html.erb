@@ -1,4 +1,4 @@
-<ul class="ph-listbox-dragdrop">
+<ul class="ph-listbox-dragdrop" id="<%= html_options[:id] %>" data-model-name="<%= object_model %>">
 <% objects.each do |item| -%>
   <li id="<%= "ph_sortable_#{item.id}" %>"><%= item.send(label) %></li>
 <% end -%>

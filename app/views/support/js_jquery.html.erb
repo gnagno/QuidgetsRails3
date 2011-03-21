@@ -67,8 +67,12 @@ $(".ph-textbox").live('keypress', function(event){
     
     $ajax({
       url: "<%= ph_quidgets_listbox_dragdrop_update_path %>",
-      data: {},
-      dataType: "json"
+      data: {object_model: $(this).attr('data-model-name')},
+      dataType: "json",
+      context: $(this),
+      success: function(result){
+        
+      }
     });
   });
 }); 
