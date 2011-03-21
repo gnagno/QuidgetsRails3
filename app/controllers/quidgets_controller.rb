@@ -53,4 +53,8 @@ class QuidgetsController < ActionController::Base
       render :json => {:msg => "Impossible to update #{params[:object_model]}"}, :layout => false
     end
   end
+  
+  def quidgets_listbox_dragdrop_update
+    order = params
+  end
 end

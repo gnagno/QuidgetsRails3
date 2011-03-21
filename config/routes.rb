@@ -6,9 +6,9 @@ ActionController::Routing::Routes.draw do |map|
 
   match 'ph_quidgets/textbox/update' => 'quidgets#quidgets_textbox_update', :as => :ph_quidgets_textbox_update
   
-  match 'ph_quidgets_dropbox_update' => 'quidgets#quidgets_dropbox_update', :as => :ph_quidgets_dropbox_update
+  match 'ph_quidgets/dropbox/update' => 'quidgets#quidgets_dropbox_update', :as => :ph_quidgets_dropbox_update
   
-  match 'ph_quidgets_dropbox_update' => 'quidgets#quidgets_listbox_dragdrop_update', :as => :ph_quidgets_listbox_dragdrop_update
+  match 'ph_quidgets/listbox/update' => 'quidgets#quidgets_listbox_dragdrop_update', :as => :ph_quidgets_listbox_dragdrop_update
   
 # route to serve the javascript
   match 'ph_quidgets/quidgets.jquery.js'  => 'support#js_jquery', :as => :ph_quidgets_jquery

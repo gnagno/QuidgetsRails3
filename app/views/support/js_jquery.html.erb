@@ -60,6 +60,17 @@ $(".ph-textbox").live('keypress', function(event){
   
   $( ".ph-listbox-dragdrop" ).sortable();
 	$( ".ph-listbox-dragdrop" ).disableSelection();
+	
+	$( ".ph-listbox-dragdrop" ).bind( "sortupdate", function(event, ui) {
+    alert( $(this).sortable('serialize') );    
+    alert( $(this).sortable('toArray') ); 
+    
+    $ajax({
+      url: "<%= ph_quidgets_listbox_dragdrop_update_path %>",
+      data: {},
+      dataType: "json"
+    });
+  });
 }); 
 
 function save_textbox(object_id, model_name, method_name, value){
