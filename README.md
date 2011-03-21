@@ -14,6 +14,7 @@ It's extremely simple to use.
 * modify your application.html.erb, replace in the <head> tag the include javascript directive with:
   
     <%= javascript_include_tag 'jquery-1.5.1.min.js' %>
+    <%= javascript_include_tag 'jquery-ui-1.8.10.custom.min.js' %>
     <%= javascript_include_tag ph_quidgets_jquery_path %>
 
 ## Example ##
