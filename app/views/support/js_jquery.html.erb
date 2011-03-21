@@ -13,10 +13,11 @@ $(function(){
   $('.ph-radio').change( function() {
     $.ajax({
       url: "<%= ph_quidgets_radio_group_update_path %>",
-      data: { object_model: $(this).attr('data-model-name'), id: $(this).attr('data-model-id'), choice_model: $(this).attr('data-choice-model'), svalue: $(this).attr('value'), callback: $(this).attr('data-callback') },
+      data: { object_model: $(this).attr('data-model-name'), id: $(this).attr('data-model-id'), choice_model: $(this).attr('data-choice-model'), svalue: $(this).attr('value')},
       dataType: "json",
+      context: $(this),
       success: function(result){
-        window[ result.callback ](result.msg);
+        window[ $(this).attr('data-callback') ](result.msg);
       }
     }); 
   });
