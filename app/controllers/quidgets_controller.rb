@@ -9,8 +9,11 @@ class QuidgetsController < ActionController::Base
       object.update_attribute(params[:method].to_sym,0)          
     end
     
-    object.save!
-    render :json => {:msg => "The #{params[:object_model_name]} was updated", :callback => params[:callback]}, :layout => false
+    if object.save
+      render :json => {:msg => "The #{params[:object_model_name]} was updated"}, :layout => false
+    else
+      render :json => {:msg => "Impossible to update #{params[:object_model_name]}"}, :layout => false
+    end
   end
  
   def quidgets_textbox_update

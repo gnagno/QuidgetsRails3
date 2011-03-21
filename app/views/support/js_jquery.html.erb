@@ -2,10 +2,11 @@ $(function(){
   $('.ph-checkbox').change(function(){
     $.ajax({
       url: "<%= ph_quidgets_checkbox_update_path %>",
-      data: {id: $(this).attr('data-object-id'), object_model_name: $(this).attr('data-model-name'), method: $(this).attr('data-object-method') , svalue: $(this).is(':checked'), callback: $(this).attr('data-callback') },
+      data: {id: $(this).attr('data-object-id'), object_model_name: $(this).attr('data-model-name'), method: $(this).attr('data-object-method') , svalue: $(this).is(':checked') },
       dataType: "json",
+      context: $(this),
       success: function(result){
-        window[ result.callback ](result.msg);
+        window[ $(this).attr('data-callback') ](result.msg);
       }
     });
   });
