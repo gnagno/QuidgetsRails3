@@ -1,5 +1,5 @@
 <ul class="ph-listbox-dragdrop">
 <% objects.each do |item| -%>
-  <li><%= item.send(label) %></li>
+  <li id="<%= "ph_sortable_#{item.id}" %>"><%= item.send(label) %></li>
 <% end -%>
 </ul>
