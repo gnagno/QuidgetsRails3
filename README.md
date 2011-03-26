@@ -86,6 +86,10 @@ Finally let's add some widgets to our test view:
     <h2>Testing dropbox</h2>
 
     <%= raw dropbox(@user, :role_id, Role.all, :id, :name, {:id => "role_#{@user.id}"}) %>
+    
+    <h2>Testing listbox drag & drop</h2>
+
+    <%= raw listbox_dragdrop(@roles, :name, :position, {:id => "listbox_dragdrop_1"}, {:callback => 'my_callback'}) %>
 
 Launch the server, visit http://localhost:3000/test/index and have fun :)
 
