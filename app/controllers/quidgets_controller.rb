@@ -55,6 +55,18 @@ class QuidgetsController < ActionController::Base
   end
   
   def quidgets_listbox_dragdrop_update
-    order = params
+    order     = params[:order].map{|e| e[12,5].to_i}
+    objects   = params[:object_model].camelize.constantize.find( order )
+    sort_key  = params[:sort_key]
+        
+    logger.info "New order received from listbox_dragdrop: #{order.inspect}"
+
+    objects.each do | object |
+      logger.info( "#{object.class}: position: #{object.position} to #{order.index( object.id )}" )
+      object.send("#{sort_key}=", order.index( object.id ) ) 
+      object.send( :save )
+    end   
+    
+    render :json => {:msg => "The #{params[:object_model]} ordering was updated"}, :layout => false
   end
 end

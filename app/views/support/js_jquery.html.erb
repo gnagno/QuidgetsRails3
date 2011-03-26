@@ -62,19 +62,20 @@ $(".ph-textbox").live('keypress', function(event){
 	$( ".ph-listbox-dragdrop" ).disableSelection();
 	
 	$( ".ph-listbox-dragdrop" ).bind( "sortupdate", function(event, ui) {
-    alert( $(this).sortable('serialize') );    
-    alert( $(this).sortable('toArray') ); 
+    var new_order = $(this).sortable('toArray');   
+//    var new_order = $(this).sortable('serialize');   
     
-    $ajax({
+    $.ajax({
       url: "<%= ph_quidgets_listbox_dragdrop_update_path %>",
-      data: {object_model: $(this).attr('data-model-name')},
+      data: {object_model: $(this).attr('data-model-name'), sort_key: $(this).attr('data-sort-key'), order: new_order},
       dataType: "json",
       context: $(this),
       success: function(result){
-        
+        window[ $(this).attr('data-callback') ](result.msg);      
       }
     });
   });
+  
 }); 
 
 function save_textbox(object_id, model_name, method_name, value){
